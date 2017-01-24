@@ -29,13 +29,14 @@ public class Closure72Parameters extends ParametersModifier {
 				Paths.get("..", "sushi-experiments-closure72", "lib/guava.jar"),
 				Paths.get("..", "sushi-experiments-closure72", "lib/libtrunk_rhino_parser_jarjared.jar"),
 				Paths.get("..", "sushi-experiments", "lib", "jbse-lib.jar"));
-		
+		p.setJREPath(Paths.get(".", "data", "jre", "rt.jar"));
 		p.setTargetMethod("com/google/javascript/jscomp/AnalysisDriver", "()V", "driver_RenameLabels_process");
 
 		//Analysis params 
 		p.setJBSEBudget(3600);
 		p.setEvosuiteBudget(3600);
 		p.setCoverage(Coverage.BRANCHES);
+		p.setPhases(1, 2, 3, 4, 5, 6);
 		
 		//Tmp out directories
 		p.setOutDirectory(Paths.get("..", "sushi-experiments-closure72", "sushi-test"));

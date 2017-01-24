@@ -16,7 +16,7 @@ import sushi.logging.Level;
 public class Closure72ParametersNoinv extends ParametersModifier {
 	@Override
 	public void modify(Options p) {
-		p.setLogLevel(Level.DEBUG);
+		p.setLogLevel(Level.INFO);
 
 		//Local configurations
 		p.setEvosuitePath(Paths.get(".", "lib", "evosuite-shaded-1.0.3.jar"));
@@ -29,12 +29,13 @@ public class Closure72ParametersNoinv extends ParametersModifier {
 				Paths.get("..", "sushi-experiments-closure72", "lib/guava.jar"),
 				Paths.get("..", "sushi-experiments-closure72", "lib/libtrunk_rhino_parser_jarjared.jar"),
 				Paths.get("..", "sushi-experiments", "lib", "jbse-lib.jar"));
-		
+		p.setJREPath(Paths.get(".", "data", "jre", "rt.jar"));
 		p.setTargetMethod("com/google/javascript/jscomp/AnalysisDriver", "()V", "driver_RenameLabels_process");
 
 		//Analysis params 
 		p.setJBSEBudget(3600);
-		p.setEvosuiteBudget(3600);
+		p.setEvosuiteBudget(1260);
+		p.setMinimizerBudget(300);
 		p.setCoverage(Coverage.BRANCHES);
 		
 		//Tmp out directories
@@ -44,7 +45,10 @@ public class Closure72ParametersNoinv extends ParametersModifier {
 		
 		//Parallelism
 		p.setRedundanceEvosuite(1);
-		p.setParallelismEvosuite(2);
+		p.setParallelismEvosuite(20);
+		
+		//Timeout
+		p.setGlobalBudget(7200);
 	}
 
 	@Override
