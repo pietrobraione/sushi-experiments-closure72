@@ -1,0 +1,20 @@
+resolve begin
+
+{R_ANY}/v_RenameLabels/compiler instanceof com/google/javascript/jscomp/AbstractCompiler expands to instanceof com/google/javascript/jscomp/StubCompiler,
+
+{R_ANY} instanceof com/google/javascript/rhino/Node expands to instanceof com/google/javascript/rhino/Node,
+{R_ANY} instanceof com/google/javascript/rhino/Node expands to instanceof com/google/javascript/rhino/Node$StringNode,
+
+-- n-ary tree shape
+{R_ANY}/first(/next)* instanceof com/google/javascript/rhino/Node aliases {$R_ANY}/last,
+
+-- Node.last
+{R_ANY}/last instanceof com/google/javascript/rhino/Node aliases max {$R_ANY}/first(/next)*,
+{R_ANY}/last/next instanceof com/google/javascript/rhino/Node expands to nothing,
+{R_ANY}/last/next instanceof com/google/javascript/rhino/Node aliases nothing,
+
+-- Node.parent
+{R_ANY}/parent instanceof com/google/javascript/rhino/Node not null,
+{R_ANY}/parent instanceof com/google/javascript/rhino/Node expands to nothing,
+{R_ANY}/parent instanceof com/google/javascript/rhino/Node aliases {$R_ANY}
+end

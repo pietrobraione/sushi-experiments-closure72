@@ -13,7 +13,7 @@ import sushi.configure.ParametersModifier;
 import sushi.configure.ParseException;
 import sushi.logging.Level;
 
-public class Closure72Parameters extends ParametersModifier {
+public class Closure72ParametersNoinv extends ParametersModifier {
 	@Override
 	public void modify(Options p) {
 		p.setLogLevel(Level.DEBUG);
@@ -50,10 +50,10 @@ public class Closure72Parameters extends ParametersModifier {
 	@Override
 	public void modify(JBSEParameters p) 
 	throws FileNotFoundException, ParseException, IOException {
-		loadHEXFile("../sushi-experiments-closure72/sushi/settings/closure_parse_tree.jbse", p);
+		loadHEXFile("../sushi-experiments-closure72/sushi/settings/closure_parse_tree_noinv.jbse", p);
 		
 		p.setHeapScope("com/google/javascript/rhino/Node", 1);		
-		p.setHeapScope("com/google/javascript/rhino/Node$StringNode", 2);		
+		p.setHeapScope("com/google/javascript/rhino/Node$StringNode", 2);
 		p.setHeapScope("com/google/javascript/rhino/Node$PropListItem", 0);
 
 		p.setDepthScope(200);

@@ -8,9 +8,6 @@ resolve begin
 {R_ANY}/v_RenameLabels/compiler instanceof com/google/javascript/jscomp/AbstractCompiler not null, 
 {R_ANY}/v_RenameLabels/compiler instanceof com/google/javascript/jscomp/AbstractCompiler expands to instanceof com/google/javascript/jscomp/StubCompiler,
 
-{R_ANY}/propListHead instanceof com/google/javascript/rhino/Node$PropListItem aliases nothing,
-{R_ANY}/propListHead instanceof com/google/javascript/rhino/Node$PropListItem expands to nothing,
-
 {R_ANY} instanceof com/google/javascript/rhino/Node expands to instanceof com/google/javascript/rhino/Node,
 {R_ANY} instanceof com/google/javascript/rhino/Node expands to instanceof com/google/javascript/rhino/Node$StringNode,
 
@@ -28,10 +25,7 @@ resolve begin
 {R_ANY}/last/next instanceof com/google/javascript/rhino/Node aliases nothing,
 
 -- Node.parent
-{R_ANY}/first(/next)*/parent instanceof com/google/javascript/rhino/Node not null,
-{R_ANY}/first(/next)*/parent instanceof com/google/javascript/rhino/Node expands to nothing,
-{R_ANY}/first(/next)*/parent instanceof com/google/javascript/rhino/Node aliases {$R_ANY},
-{R_ANY}/last/parent instanceof com/google/javascript/rhino/Node not null,
-{R_ANY}/last/parent instanceof com/google/javascript/rhino/Node expands to nothing,
-{R_ANY}/last/parent instanceof com/google/javascript/rhino/Node aliases {$R_ANY}
+{R_ANY}/parent instanceof com/google/javascript/rhino/Node not null,
+{R_ANY}/parent instanceof com/google/javascript/rhino/Node expands to nothing,
+{R_ANY}/parent instanceof com/google/javascript/rhino/Node aliases {$R_ANY}
 end
