@@ -41,7 +41,6 @@ public class Closure72ParametersNoinv extends ParametersModifier {
 		//Tmp out directories
 		p.setOutDirectory(Paths.get("..", "sushi-experiments-closure72", "sushi-test"));
 		p.setTmpDirectoryBase(Paths.get("..", "sushi-experiments-closure72", "out"));
-		p.setTmpDirectoryName("closure72");
 		
 		//Parallelism
 		p.setRedundanceEvosuite(1);
