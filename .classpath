@@ -3,7 +3,7 @@
 	<classpathentry including="**/*.java" kind="src" output="build/test-classes" path="test"/>
 	<classpathentry including="**/*.java" kind="src" path="src"/>
 	<classpathentry including="**/*.java" kind="src" path="gen"/>
-	<classpathentry kind="src" path="sushi"/>
+	<classpathentry kind="src" path="sushi-src"/>
 	<classpathentry kind="src" path="sushi-test"/>
 	<classpathentry kind="lib" path="lib/ant.jar"/>
 	<classpathentry kind="lib" path="lib/ant-launcher.jar"/>

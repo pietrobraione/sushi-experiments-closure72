@@ -13,10 +13,10 @@ import sushi.configure.ParametersModifier;
 import sushi.configure.ParseException;
 import sushi.logging.Level;
 
-public class Closure72Parameters extends ParametersModifier {
+public class Closure72ParametersPartial extends ParametersModifier {
 	@Override
 	public void modify(Options p) {
-		p.setLogLevel(Level.DEBUG);
+		p.setLogLevel(Level.INFO);
 
 		//Local configurations
 		p.setEvosuitePath(Paths.get(".", "lib", "evosuite-shaded-1.0.3.jar"));
@@ -34,26 +34,29 @@ public class Closure72Parameters extends ParametersModifier {
 
 		//Analysis params 
 		p.setJBSEBudget(3600);
-		p.setEvosuiteBudget(3600);
+		p.setEvosuiteBudget(1260);
+		p.setMinimizerBudget(300);
 		p.setCoverage(Coverage.BRANCHES);
-		p.setPhases(1, 2, 3, 4, 5, 6);
 		
 		//Tmp out directories
 		p.setOutDirectory(Paths.get("..", "sushi-experiments-closure72", "sushi-test"));
-		p.setTmpDirectoryBase(Paths.get("..", "sushi-experiments-closure72", "out"));
+		p.setTmpDirectoryBase(Paths.get("..", "sushi-experiments-closure72", "sushi-out"));
 		
 		//Parallelism
 		p.setRedundanceEvosuite(1);
-		p.setParallelismEvosuite(2);
+		p.setParallelismEvosuite(20);
+		
+		//Timeout
+		p.setGlobalBudget(7200);
 	}
 
 	@Override
 	public void modify(JBSEParameters p) 
 	throws FileNotFoundException, ParseException, IOException {
-		loadHEXFile("../sushi-experiments-closure72/sushi/settings/closure_parse_tree.jbse", p);
+		loadHEXFile("../sushi-experiments-closure72/sushi-src/settings/closure_parse_tree_partial.jbse", p);
 		
 		p.setHeapScope("com/google/javascript/rhino/Node", 1);		
-		p.setHeapScope("com/google/javascript/rhino/Node$StringNode", 2);		
+		p.setHeapScope("com/google/javascript/rhino/Node$StringNode", 2);
 		p.setHeapScope("com/google/javascript/rhino/Node$PropListItem", 0);
 
 		p.setDepthScope(200);
