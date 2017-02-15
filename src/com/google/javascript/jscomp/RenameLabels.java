@@ -24,6 +24,8 @@ import com.google.javascript.jscomp.NodeTraversal.ScopedCallback;
 import com.google.javascript.rhino.Node;
 import com.google.javascript.rhino.Token;
 
+import jbse.meta.Analysis;
+
 import java.util.ArrayList;
 import java.util.Deque;
 import java.util.HashMap;
@@ -143,6 +145,7 @@ public final class RenameLabels implements CompilerPass {
       namespaceStack.pop();
     }
 
+    private Object SUSHISEPHASE;
     /**
      * shouldTraverse is call when descending into the Node tree, so it is used
      * here to build the context for label renames.
@@ -164,7 +167,7 @@ public final class RenameLabels implements CompilerPass {
 
         // Create a new name, if needed, for this depth.
         if (names.size() < currentDepth) {
-        	names.add(/*SUSHI: JBSE does not handle well fresh symbolic strings. Workaround: use a constant string*/ "FAKE_NAME" /*nameGenerator.generateNextName()*/);
+        	names.add(!Analysis.isResolved(this, "SUSHISEPHASE")?/*SUSHI: JBSE does not handle well fresh symbolic strings. Workaround: use a constant string*/ "FAKE_NAME": nameGenerator.generateNextName());
         }
 
         String newName = getNameForId(currentDepth);
@@ -224,7 +227,7 @@ public final class RenameLabels implements CompilerPass {
      */
     private void visitLabel(Node node, Node parent) {
       Node nameNode = node.getFirstChild();
-      Preconditions.checkState(nameNode != null);
+      //Preconditions.checkState(nameNode != null);
       String name = nameNode.getString();
       LabelInfo li = getLabelInfo(name);
       // This is a label...
