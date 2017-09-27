@@ -239,6 +239,7 @@ public final class RenameLabels implements CompilerPass {
           compiler.reportCodeChange();
         }
       } else {
+    	/*SUSHI: Bug tracking */ AnalysisDriver.traversingBug72Location(removeUnused);
         // ... and it is not referenced, just remove it.
         Node newChild = node.getLastChild();
         node.removeChild(newChild);

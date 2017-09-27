@@ -1,8 +1,9 @@
 package settings;
 
+import static settings.Settings.*;
+
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.nio.file.Paths;
 import java.util.List;
 
 import sushi.configure.Coverage;
@@ -19,17 +20,13 @@ public class Closure72ParametersAccurate extends ParametersModifier {
 		p.setLogLevel(Level.DEBUG);
 
 		//Local configurations
-		p.setEvosuitePath(Paths.get(".", "lib", "evosuite-shaded-1.0.3.jar"));
-		p.setSushiLibPath(Paths.get("..", "sushi-lib", "bin"));
-		p.setZ3Path(Paths.get("/opt", "local", "bin", "z3"));
+		p.setEvosuitePath(EVOSUITE_PATH);
+		p.setSushiLibPath(SUSHI_LIB_PATH);
+		p.setZ3Path(Z3_PATH);
 
 		//Target 
-		p.setClassesPath(
-				Paths.get("..", "sushi-experiments-closure72", "build/classes"), 
-				Paths.get("..", "sushi-experiments-closure72", "lib/guava.jar"),
-				Paths.get("..", "sushi-experiments-closure72", "lib/libtrunk_rhino_parser_jarjared.jar"),
-				Paths.get("..", "sushi-experiments", "lib", "jbse-lib.jar"));
-		p.setJREPath(Paths.get(".", "data", "jre", "rt.jar"));
+		p.setClassesPath(BIN_PATH, GUAVA_PATH, RHINOJJ_PATH, JBSE_PATH);
+		p.setJREPath(JRE_PATH);
 		p.setTargetMethod("com/google/javascript/jscomp/AnalysisDriver", "()V", "driver_RenameLabels_process");
 
 		//Analysis params 
@@ -39,8 +36,8 @@ public class Closure72ParametersAccurate extends ParametersModifier {
 		p.setPhases(1, 2, 3, 4, 5, 6);
 		
 		//Tmp out directories
-		p.setOutDirectory(Paths.get("..", "sushi-experiments-closure72", "sushi-test"));
-		p.setTmpDirectoryBase(Paths.get("..", "sushi-experiments-closure72", "sushi-out"));
+		p.setOutDirectory(OUT_PATH);
+		p.setTmpDirectoryBase(TMP_BASE_PATH);
 		
 		//Parallelism
 		p.setRedundanceEvosuite(1);
@@ -53,7 +50,7 @@ public class Closure72ParametersAccurate extends ParametersModifier {
 	@Override
 	public void modify(JBSEParameters p) 
 	throws FileNotFoundException, ParseException, IOException {
-		loadHEXFile("../sushi-experiments-closure72/sushi-src/settings/closure_parse_tree_accurate.jbse", p);
+		loadHEXFile(SETTINGS_PATH + "closure_parse_tree_accurate.jbse", p);
 		
 		p.setHeapScope("com/google/javascript/rhino/Node", 1);		
 		p.setHeapScope("com/google/javascript/rhino/Node$StringNode", 2);		
@@ -67,7 +64,6 @@ public class Closure72ParametersAccurate extends ParametersModifier {
 	public void modify(MergerParameters p) {
 		p.setBranchesToCover("com/google/javascript/jscomp/RenameLabels.*");
 	}
-
 
 	@Override
 	public void modify(List<String> p) {
