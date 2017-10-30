@@ -5,7 +5,7 @@ import com.google.javascript.rhino.Node;
 import jbse.meta.Analysis;
 
 public class AnalysisDriver {
-	static int BUG72_EXEC_COUNT = 0;
+	static int BUG72_EXEC_COUNT;
 	static void traversingBug72Location(boolean removeUnusedValue) {
 		if (!removeUnusedValue) {
 			BUG72_EXEC_COUNT++;
@@ -23,6 +23,7 @@ public class AnalysisDriver {
 	}
 	
 	public void driver_RenameLabels_process() {
+		BUG72_EXEC_COUNT = 0;
 		try{
 			v_RenameLabels.process(null, v_Node);			
 			Analysis.ass3rt(BUG72_EXEC_COUNT == 0);

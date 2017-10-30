@@ -145,7 +145,6 @@ public final class RenameLabels implements CompilerPass {
       namespaceStack.pop();
     }
 
-    private Object SUSHISEPHASE;
     /**
      * shouldTraverse is call when descending into the Node tree, so it is used
      * here to build the context for label renames.
@@ -167,7 +166,11 @@ public final class RenameLabels implements CompilerPass {
 
         // Create a new name, if needed, for this depth.
         if (names.size() < currentDepth) {
-        	names.add(!Analysis.isResolved(this, "SUSHISEPHASE")?/*SUSHI: JBSE does not handle well fresh symbolic strings. Workaround: use a constant string*/ "FAKE_NAME": nameGenerator.generateNextName());
+        	if (Analysis.isRunByJBSE()) {/*SUSHI: JBSE does not handle well fresh symbolic strings. Workaround: use a constant string*/
+        	names.add("FAKE_NAME");
+        	} else {
+        	names.add(nameGenerator.generateNextName());
+        	}
         }
 
         String newName = getNameForId(currentDepth);
