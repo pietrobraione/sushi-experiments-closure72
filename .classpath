@@ -18,6 +18,6 @@
 	<classpathentry kind="lib" path="lib/libtrunk_rhino_parser_jarjared.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/jbse"/>
 	<classpathentry kind="lib" path="/sushi/evosuite/evosuite-shaded-1.0.3.jar"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/runtime"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/sushi-lib"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
