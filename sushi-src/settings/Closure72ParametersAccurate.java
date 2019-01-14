@@ -26,7 +26,6 @@ public class Closure72ParametersAccurate extends ParametersModifier {
 
 		//Target 
 		p.setClassesPath(BIN_PATH, GUAVA_PATH, RHINOJJ_PATH, JBSE_PATH);
-		p.setJREPath(JRE_PATH);
 		p.setTargetMethod("com/google/javascript/jscomp/AnalysisDriver", "()V", "driver_RenameLabels_process");
 
 		//Analysis params 
@@ -50,7 +49,7 @@ public class Closure72ParametersAccurate extends ParametersModifier {
 	@Override
 	public void modify(JBSEParameters p) 
 	throws FileNotFoundException, ParseException, IOException {
-		loadHEXFile(SETTINGS_PATH + "closure_parse_tree_accurate.jbse", p);
+		loadHEXFile(SETTINGS_PATH.resolve("closure_parse_tree_accurate.jbse").toString(), p);
 		
 		p.setHeapScope("com/google/javascript/rhino/Node", 1);		
 		p.setHeapScope("com/google/javascript/rhino/Node$StringNode", 2);		
