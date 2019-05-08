@@ -1,9 +1,9 @@
 resolve begin
 
-{R_ANY}.{°}*:FIRST_CHAR instanceof [C not null;
-{R_ANY}.{°}*:NONFIRST_CHAR instanceof [C not null;
-{R_ANY}.{°}*:FIRST_CHAR instanceof [C aliases nothing;
-{R_ANY}.{°}*:NONFIRST_CHAR instanceof [C aliases nothing;
+[com/google/javascript/jscomp/NameGenerator].com/google/javascript/jscomp/NameGenerator:FIRST_CHAR instanceof [C not null;
+[com/google/javascript/jscomp/NameGenerator].com/google/javascript/jscomp/NameGenerator:NONFIRST_CHAR instanceof [C not null;
+[com/google/javascript/jscomp/NameGenerator].com/google/javascript/jscomp/NameGenerator:FIRST_CHAR instanceof [C aliases nothing;
+[com/google/javascript/jscomp/NameGenerator].com/google/javascript/jscomp/NameGenerator:NONFIRST_CHAR instanceof [C aliases nothing;
 
 {R_ANY}.com/google/javascript/jscomp/AnalysisDriver:v_RenameLabels.com/google/javascript/jscomp/RenameLabels:compiler instanceof com/google/javascript/jscomp/AbstractCompiler not null; 
 {R_ANY}.com/google/javascript/jscomp/AnalysisDriver:v_RenameLabels.com/google/javascript/jscomp/RenameLabels:compiler instanceof com/google/javascript/jscomp/AbstractCompiler expands to instanceof com/google/javascript/jscomp/StubCompiler;
